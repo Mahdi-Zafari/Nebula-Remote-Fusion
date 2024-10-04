@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+html, body {
+    touch-action: manipulation;
+}
+
+meta[name="viewport"] {
+    content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --body-color: #0a0f1f;
+    --text-color: #f5f6fa;
+
+    --blue-glow: rgba(0, 131, 255, 0.5);
+    --error-color: #ff4d4d;
+    --success-color: #00ff7f;
+
+    --tran-01: all 0.3s ease;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--body-color);
+    background-image: linear-gradient(to bottom, var(--blue-glow), transparent);
+    background-size: 100% 300px;
+    background-repeat: no-repeat;
+    transition: var(--tran-01);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.icon-box i {
+    font-size: 100px;
+    margin-bottom: 20px;
+    color: var(--blue-glow);
+}
+
+h1, p {
+    color: var(--text-color);
+    margin: 0;
+}
+
+p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.success-icon {
+    color: var(--success-color);
+}
+
+.error-icon {
+    color: var(--error-color);
+}

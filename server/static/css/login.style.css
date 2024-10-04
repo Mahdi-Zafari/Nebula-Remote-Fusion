@@ -1,0 +1,88 @@
+:root {
+    --body-color: #0a0f1f;
+    --text-color: #f5f6fa;
+    --background-one-color: #1e2430;
+    --background-nav-color: rgba(30, 36, 48, 0.9);
+    --border-color: 1px solid rgba(255, 255, 255, 0.2);
+    --blue-glow: rgba(0, 131, 255, 0.5);
+    --hover-color: rgba(0, 131, 255, 0.2);
+    --tran-01: all 0.3s ease;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--body-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+.login-container {
+    background-color: var(--background-one-color);
+    padding: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    border: var(--border-color);
+    backdrop-filter: blur(10px);
+    width: 320px;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    outline: none;
+    transition: var(--tran-01);
+    box-sizing: border-box;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--blue-glow);
+}
+
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(0, 131, 255, 0.8);
+    border: none;
+    color: var(--text-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.login-container button:hover {
+    background-color: rgba(0, 131, 255, 1);
+    transform: translateY(-2px);
+}
+
+.login-container button:active {
+    background-color: rgba(0, 131, 255, 0.9);
+    transform: translateY(1px);
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}

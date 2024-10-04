@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula Remote Fusion</title>
+    <link rel="icon" href="../static/imgs/nebula-RF-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/main.style.css">
+    <link rel="stylesheet" href="../static/css/layout.style.css">
+    <link rel="stylesheet" href="../static/icon/boxicons-2.1.4/css/boxicons.min.css">
+</head>
+<body>
+
+    <div class="message-container">
+        <div id="error-message" class="error-message"></div>
+        <div id="success-message" class="success-message"></div>
+    </div>
+
+    <div class="navbar">
+
+        <div class="logo-title-bx">
+            <img src="../static/imgs/nebula-RF-logo.png" alt="Cloud Remote Fusion Logo">
+            <span>Nebula Remote Fusion</span>
+            <!-- <span>Beta</span> -->
+        </div>
+
+        <div class="navbar-content">
+
+            <button class="dropdown-power-options" id="dropdown-btn">
+                <i class='bx bx-power-off'></i>
+            </button>
+
+            <div class="power-options-menu" id="power-options">
+                <button class="power-option" id="restart">Restart</button>
+                <button class="power-option" id="shutdown">Shutdown</button>
+                <button class="power-option" id="sleep">Sleep</button>
+                <button class="power-option" id="lock">Lock</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="window-loading">
+        <div class="loading-animation">
+            <div class="dots">
+                <div style="--i: 0;" class="dot"></div>
+                <div style="--i: 1;" class="dot"></div>
+                <div style="--i: 2;" class="dot"></div>
+                <div style="--i: 3;" class="dot"></div>
+                <div style="--i: 4;" class="dot"></div>
+                <div style="--i: 5;" class="dot"></div>
+              </div>
+        </div>
+        <div class="loading-message">
+            <span>{Loading Test}</span>
+        </div>
+    </div>
+
+    <div class="root">
+
+        <div class="control-performance">
+
+            <div class="control-performance-item">
+                <i class='bx bx-chip'></i>
+                <span id="cpu-usage">CPU: --%</span>
+            </div>
+
+            <div class="control-performance-item">
+                <i class='bx bx-memory-card'></i>
+                <span id="ram-usage">RAM: --%</span>
+            </div>
+
+            <div class="control-performance-item">
+                <i class='bx bx-hdd'></i>
+                <span id="disk-usage">Disk: --%</span>
+            </div>
+
+            <div class="control-performance-item">
+                <i class='bx bx-time'></i>
+                <span id="uptime">Uptime: --</span>
+            </div>
+            
+        </div>
+
+        <div class="box-options-ControlCenter">
+
+            <div class="control-center-row">
+                <div class="control-device control-battery">
+                    <i class='bx bx-battery' id="battery-icon"></i>
+                    <span id="battery-percentage">--%</span>
+                </div>
+            
+                <div class="control-device control-wifi">
+                    <i class='bx bx-wifi' id="wifi-icon"></i>
+                    <span id="wifi-status">--</span>
+                </div>
+            
+                <div class="control-device control-bluetooth">
+                    <i class='bx bx-bluetooth' id="bluetooth-icon"></i>
+                    <span id="bluetooth-status">--</span>
+                </div>
+    
+                <div class="control-device control-airplane">
+                    <i class='bx bxs-plane' id="airplane-icon"></i>
+                    <span id="airplane-status">--</span>
+                </div>
+            </div>
+
+            <div class="control-center-second-row">
+                <div class="control-device-with-buttons control-brightness">
+                    <div class="brightness-info">
+                        <i class='bx bx-brightness' id="brightness-icon"></i>
+                        <span id="brightness-status">--%</span>
+                    </div>
+                    <div class="control-buttons">
+                        <button class="control-button decrease" onclick="adjustBrightness(-10)">
+                            <i class='bx bx-minus-circle'></i>
+                        </button>
+                        <button class="control-button increase" onclick="adjustBrightness(10)">
+                            <i class='bx bx-plus-circle'></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="control-device-with-buttons control-volume">
+                    <div class="brightness-info">
+                        <i class='bx bx-volume-full' id="volume-icon"></i>
+                        <span id="volume-status">--%</span>
+                    </div>
+                    <div class="control-buttons">
+                        <button class="control-button decrease" onclick="adjustVolume(-10)">
+                            <i class='bx bx-minus-circle'></i>
+                        </button>
+                        <button class="control-button increase" onclick="adjustVolume(10)">
+                            <i class='bx bx-plus-circle'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+            
+        <div class="box-options-one">
+            <div class="content">
+                <i class='bx bx-time'></i>
+                <h2>Coming Soon</h2>
+                <p>More features will be added soon. Stay tuned!</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../static/js/main.script.js"></script>
+    <script src="../static/js/power-options.script.js"></script>
+    <script src="../static/js/control-center.script.js"></script>
+</body>
+</html>
