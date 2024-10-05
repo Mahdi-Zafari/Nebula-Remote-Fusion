@@ -1,0 +1,119 @@
+:root {
+    /* ===== Colors Main ===== */
+    --body-color: #0a0f1f;
+    --text-color: #f5f6fa;
+
+    --background-one-color: #1e2430;
+    --background-nav-color: rgba(30, 36, 48, 0.9);
+    --border-color: 1px solid rgba(255, 255, 255, 0.2);
+
+    --blue-glow: rgba(0, 131, 255, 0.5);
+    --purple-glow: rgba(128, 0, 128, 0.5);
+    --hover-color: rgba(0, 131, 255, 0.2);
+
+    /* ====== Transition ====== */
+    --tran-01: all 0.3s ease;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--body-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+}
+
+.error-container {
+    background-color: var(--background-one-color);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    border: var(--border-color);
+    position: relative;
+    animation: glow 2s infinite alternate;
+    margin: auto 10px;
+}
+
+.logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--purple-glow), 0 0 40px var(--purple-glow), 0 0 60px var(--blue-glow);
+    margin-bottom: 20px;
+}
+
+.error-container h1 {
+    font-size: 2.5rem;
+    margin: 10px 0;
+    color: var(--blue-glow);
+}
+
+.error-container p {
+    margin: 10px 0;
+}
+
+.error-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.error-container a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--blue-glow);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: var(--tran-01);
+}
+
+.error-container a:hover {
+    background-color: var(--hover-color);
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 20px var(--purple-glow), 0 0 40px var(--purple-glow), 0 0 60px var(--blue-glow);
+    }
+    100% {
+        box-shadow: 0 0 30px var(--purple-glow), 0 0 50px var(--purple-glow), 0 0 70px var(--blue-glow);
+    }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 600px) {
+    .error-container {
+        padding: 20px;
+    }
+    
+    .error-container h1 {
+        font-size: 2rem;
+    }
+    
+    .error-container p {
+        font-size: 0.9rem;
+    }
+    
+    .error-container a {
+        font-size: 0.9rem;
+    }
+}
