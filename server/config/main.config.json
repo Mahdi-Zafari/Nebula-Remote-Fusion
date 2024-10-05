@@ -3,5 +3,6 @@
         "username": "admin",
         "password": "admin"
     },
+    "model": "beta_model",
     "save_tokens": false
 }
