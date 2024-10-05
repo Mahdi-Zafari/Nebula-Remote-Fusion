@@ -20,8 +20,11 @@ if not os.path.isfile(config_path):
 
 with open(config_path, 'r') as config_file:
     config = json.load(config_file)
-
+    
+model_template_path = f'model/{config["model"]}'
 token_config_path = os.path.join(os.path.dirname(__file__), 'config', 'token.config.json')
+
+print(model_template_path)
 
 def save_tokens(data):
     with open(token_config_path, 'w') as f:
@@ -61,8 +64,8 @@ def login():
 
             return redirect(url_for('home'))
         else:
-            return render_template("access_denied.html")
-    return render_template('Auth/login.html')
+            return render_template(f'{model_template_path}/access_denied.html')
+    return render_template(f'{model_template_path}/Auth/login.html')
 
 @app.before_request
 def check_login():
@@ -87,11 +90,15 @@ def logout():
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template(f'{model_template_path}/index.html')
 
 @app.route('/operation_status')
 def operation_status():
-    return render_template('operation_status.html')
+    return render_template(f'{model_template_path}/operation_status.html')
+
+@app.errorhandler(404)
+def not_found_error(e):
+    return render_template(f'{model_template_path}/operation_status.html'), 404
 
 @app.route('/check-connection')
 def check_connection():
@@ -254,10 +261,6 @@ def performance():
         }), 200
     except Exception as e:
         return str(e), 500
-
-@app.errorhandler(404)
-def not_found_error(e):
-    return render_template('operation_status.html'), 404
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
