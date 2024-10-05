@@ -4,6 +4,6 @@
         "port": 8080,
         "debug": false
     },
-    "open_browser": false,
+    "open_browser": true,
     "gost": false
 }
