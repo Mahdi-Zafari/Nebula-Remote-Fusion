@@ -320,7 +320,8 @@ class win_main(QMainWindow, Ui_main):
     # ===== UI interactions ===== #
     def close_program(self):
         """Close the application."""
-        self.stop_server()
+        if hasattr(self, 'server_process') and self.server_process is not None:
+            self.stop_server()
         self.close()
 
     def open_nav_menu(self):
@@ -348,14 +349,20 @@ class win_main(QMainWindow, Ui_main):
         self.label_text_s_message.setText(message_text)
         self.widget_success_message.show()
 
-        Timer(3, self.widget_success_message.hide).start()
+        self.success_message_timer = QTimer(self)
+        self.success_message_timer.setSingleShot(True)
+        self.success_message_timer.timeout.connect(self.widget_success_message.hide)
+        self.success_message_timer.start(3000)
 
     def show_error_message(self, message_text):
         """Show error message with the given text."""
         self.label_text_e_message.setText(message_text)
         self.widget_error_message.show()
-        
-        Timer(3, self.widget_error_message.hide).start()
+
+        self.error_message_timer = QTimer(self)
+        self.error_message_timer.setSingleShot(True)
+        self.error_message_timer.timeout.connect(self.widget_error_message.hide)
+        self.error_message_timer.start(3000)
 
 def load_config():
     """Load configuration from JSON file."""
