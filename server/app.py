@@ -56,13 +56,13 @@ def login():
         if username == config["user"]["username"] and password == config["user"]["password"]:
             token = jwt.encode({
                 'username': username,
-                'exp': datetime.now(timezone.utc) + timedelta(hours=1)  # تغییر این خط
+                'exp': datetime.now(timezone.utc) + timedelta(hours=1)
             }, app.secret_key)
 
             user_data = {
                 'token': token,
-                'created_at': datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),  # تغییر این خط
-                'expires_at': (datetime.now(timezone.utc) + timedelta(hours=1)).strftime("%Y-%m-%d %H:%M:%S"),  # تغییر این خط
+                'created_at': datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
+                'expires_at': (datetime.now(timezone.utc) + timedelta(hours=1)).strftime("%Y-%m-%d %H:%M:%S"),\
                 'ip': request.remote_addr,
                 'user_agent': request.headers.get('User-Agent'),
                 'device': request.user_agent.platform
