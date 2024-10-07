@@ -5,7 +5,6 @@ from threading import Timer
 import subprocess
 import webbrowser
 import getpass
-import socket
 import json
 import sys
 import os
