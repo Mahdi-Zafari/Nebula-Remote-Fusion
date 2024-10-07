@@ -710,6 +710,56 @@ class Ui_main(object):
         self.btn_more.setIconSize(QtCore.QSize(25, 25))
         self.btn_more.setCheckable(True)
         self.btn_more.setObjectName("btn_more")
+        self.widget_my_about = QtWidgets.QWidget(self.widget_nav_menu)
+        self.widget_my_about.setGeometry(QtCore.QRect(10, 560, 220, 70))
+        self.widget_my_about.setMinimumSize(QtCore.QSize(220, 70))
+        self.widget_my_about.setStyleSheet("QWidget{\n"
+"    background-color: #303030;\n"
+"    border-radius: 13px;\n"
+"}")
+        self.widget_my_about.setObjectName("widget_my_about")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.widget_my_about)
+        self.horizontalLayout_5.setContentsMargins(10, 10, 10, 10)
+        self.horizontalLayout_5.setSpacing(10)
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        self.label_my_name = QtWidgets.QLabel(self.widget_my_about)
+        font = QtGui.QFont()
+        font.setFamily("Nirmala UI")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_my_name.setFont(font)
+        self.label_my_name.setStyleSheet("color: #ebe9fc;")
+        self.label_my_name.setObjectName("label_my_name")
+        self.horizontalLayout_5.addWidget(self.label_my_name)
+        self.btn_my_github = QtWidgets.QPushButton(self.widget_my_about)
+        self.btn_my_github.setMinimumSize(QtCore.QSize(40, 40))
+        self.btn_my_github.setMaximumSize(QtCore.QSize(40, 40))
+        font = QtGui.QFont()
+        font.setFamily("Nirmala UI")
+        font.setPointSize(11)
+        font.setBold(False)
+        font.setWeight(50)
+        self.btn_my_github.setFont(font)
+        self.btn_my_github.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btn_my_github.setStyleSheet("QPushButton{\n"
+"    background-color: #353535;\n"
+"    border-radius:10px;\n"
+"    color: #ebe9fc;\n"
+"    border: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color: #404040;\n"
+"border-radius:10px;\n"
+"}")
+        self.btn_my_github.setText("")
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/img/img/github.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_my_github.setIcon(icon4)
+        self.btn_my_github.setIconSize(QtCore.QSize(30, 30))
+        self.btn_my_github.setObjectName("btn_my_github")
+        self.horizontalLayout_5.addWidget(self.btn_my_github)
         self.btn_close_nav_menu = QtWidgets.QPushButton(self.widget_nav_background)
         self.btn_close_nav_menu.setGeometry(QtCore.QRect(250, 10, 40, 40))
         font = QtGui.QFont()
@@ -730,9 +780,9 @@ class Ui_main(object):
 "border-radius:10px;\n"
 "}")
         self.btn_close_nav_menu.setText("")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/img/img/x.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_close_nav_menu.setIcon(icon4)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/img/img/x.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_close_nav_menu.setIcon(icon5)
         self.btn_close_nav_menu.setIconSize(QtCore.QSize(30, 30))
         self.btn_close_nav_menu.setObjectName("btn_close_nav_menu")
         self.widget_error_message = QtWidgets.QWidget(self.widget)
@@ -822,6 +872,7 @@ class Ui_main(object):
         self.label_pcname.setText(_translate("MainWindow", "Mahdi Zafari"))
         self.btn_home.setText(_translate("MainWindow", "Home"))
         self.btn_more.setText(_translate("MainWindow", "More"))
+        self.label_my_name.setText(_translate("MainWindow", "By Mahdi Zafari"))
         self.label_text_e_message.setText(_translate("MainWindow", "{Message}"))
         self.label_text_s_message.setText(_translate("MainWindow", "{Message}"))
 
