@@ -20,4 +20,12 @@
 Currently, in its early versions, NRF is only available for Windows, with plans for broader platform support in the future.
 
 ### Features and Capabilities
-:green_circle: Coming Soon...<br>
+
+> [!IMPORTANT]
+> **Windows**: Coming Soon...
+
+> [!NOTE]
+> **macOS**: Coming Soon...
+
+> [!NOTE]
+> **Linux**: Coming Soon...
