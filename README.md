@@ -7,7 +7,7 @@
 
 ## Contents
 - [Introduction](#NRF-introduction)<br>
-- [Features](#features)<br>
+- [Features](#features-and-Capabilities)<br>
 - [Installation guide](#installation-guide) <br>
   - [Server optimization](#server-optimization)<br>
 - [document](#document)<br>
