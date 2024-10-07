@@ -76,6 +76,7 @@ class win_main(QMainWindow, Ui_main):
         self.Button_minimized.clicked.connect(self.minimize_to_tray)
         self.btn_open_nav_menu.clicked.connect(self.open_nav_menu)
         self.btn_close_nav_menu.clicked.connect(self.close_nav_menu)
+        self.btn_my_github.clicked.connect(self.open_github)
 
         self.Btn_active_inactive.clicked.connect(self.toggle_status)
         self.btn_open_browser.clicked.connect(self.open_browser)
@@ -342,6 +343,9 @@ class win_main(QMainWindow, Ui_main):
         self.widget_home.hide()
         self.widget_more.show()
         self.widget_nav_background.hide()
+
+    def open_github(self):
+        webbrowser.open('https://github.com/Mahdi-Zafari')
 
     def show_success_message(self, message_text):
         """Show success message with the given text."""
