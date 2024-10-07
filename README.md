@@ -21,7 +21,36 @@ Currently, in its early versions, NRF is only available for Windows, with plans 
 ### Features and Capabilities
 
 > [!IMPORTANT]
-> **Windows**: Coming Soon...
+> **Windows**: 
+> 
+> 1. **Authentication Management**
+>    - User Login
+>    - JWT Token Generation
+>    - Token Storage
+>    - User Logout
+> 
+> 2. **System Status Management**
+>    - Battery Status
+>    - Wi-Fi and Bluetooth Status
+>    - Airplane Mode Status
+> 
+> 3. **Power Management**
+>    - Shutdown System
+>    - Restart System
+>    - Sleep Mode Activation
+>    - Screen Locking
+> 
+> 4. **Brightness and Volume Controls**
+>    - Set Screen Brightness
+>    - Set Volume Level
+> 
+> 5. **Performance Monitoring**
+>    - CPU, RAM, and Disk Usage
+>    - Boot Time
+> 
+> 6. **User Interface**
+>    - Customizable User Interface
+>    - JSON Responses
 
 > [!NOTE]
 > **macOS**: Coming Soon...
