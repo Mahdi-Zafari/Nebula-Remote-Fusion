@@ -4,5 +4,9 @@
         "password": "admin"
     },
     "model": "beta_model",
-    "save_tokens": false
+    "save_tokens": false,
+    "mouse_movement": {
+        "x": 100, 
+        "y": 100
+    }
 }
