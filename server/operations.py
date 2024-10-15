@@ -3,9 +3,22 @@ from flask import jsonify
 from ctypes import cast, POINTER
 from comtypes import CLSCTX_ALL
 import subprocess
+import pyautogui
 import comtypes
 import psutil
+import json
 import os
+
+config_path = os.path.join(os.path.dirname(__file__), 'config', 'main.config.json')
+
+if not os.path.isfile(config_path):
+    raise FileNotFoundError(f"Config file not found: {config_path}")
+
+with open(config_path, 'r') as config_file:
+    config = json.load(config_file)
+
+mouse_movement_x = config.get("mouse_movement", {}).get("x", 0)
+mouse_movement_y = config.get("mouse_movement", {}).get("y", 0)
 
 def register_routes(app):
     @app.route('/check-connection')
@@ -169,3 +182,39 @@ def register_routes(app):
             }), 200
         except Exception as e:
             return str(e), 500
+
+    @app.route('/mouse/move/up', methods=['POST'])
+    def move_mouse_up():
+        try:
+            current_position = pyautogui.position()
+            pyautogui.moveTo(current_position.x, current_position.y - mouse_movement_y)
+            return jsonify({'status': 'mouse moved up'}), 200
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+
+    @app.route('/mouse/move/down', methods=['POST'])
+    def move_mouse_down():
+        try:
+            current_position = pyautogui.position()
+            pyautogui.moveTo(current_position.x, current_position.y + mouse_movement_y)
+            return jsonify({'status': 'mouse moved down'}), 200
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+
+    @app.route('/mouse/move/left', methods=['POST'])
+    def move_mouse_left():
+        try:
+            current_position = pyautogui.position()
+            pyautogui.moveTo(current_position.x - mouse_movement_x, current_position.y)
+            return jsonify({'status': 'mouse moved left'}), 200
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+
+    @app.route('/mouse/move/right', methods=['POST'])
+    def move_mouse_right():
+        try:
+            current_position = pyautogui.position()
+            pyautogui.moveTo(current_position.x + mouse_movement_x, current_position.y)
+            return jsonify({'status': 'mouse moved right'}), 200
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
