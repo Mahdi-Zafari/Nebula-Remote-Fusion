@@ -459,60 +459,13 @@ class Ui_main(object):
 "    border-bottom-left-radius:10px;\n"
 "}")
         self.widget_home.setObjectName("widget_home")
-        self.Btn_active_inactive = QtWidgets.QPushButton(self.widget_home)
-        self.Btn_active_inactive.setGeometry(QtCore.QRect(355, 565, 65, 65))
-        font = QtGui.QFont()
-        font.setFamily("Microsoft YaHei")
-        font.setPointSize(11)
-        font.setBold(False)
-        font.setWeight(50)
-        self.Btn_active_inactive.setFont(font)
-        self.Btn_active_inactive.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.Btn_active_inactive.setStyleSheet("QPushButton{\n"
-"    background-color: #433bff;\n"
-"    border-radius:10px;\n"
-"    color: #ebe9fc;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"background-color: #2f27ce;\n"
-"border-radius:10px;\n"
-"}")
-        self.Btn_active_inactive.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/img/img/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon1.addPixmap(QtGui.QPixmap(":/img/img/stop.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.Btn_active_inactive.setIcon(icon1)
-        self.Btn_active_inactive.setIconSize(QtCore.QSize(30, 30))
-        self.Btn_active_inactive.setCheckable(True)
-        self.Btn_active_inactive.setObjectName("Btn_active_inactive")
         self.widget_option_1 = QtWidgets.QWidget(self.widget_home)
-        self.widget_option_1.setGeometry(QtCore.QRect(20, 60, 390, 52))
+        self.widget_option_1.setGeometry(QtCore.QRect(20, 60, 390, 181))
         self.widget_option_1.setStyleSheet("border: 2px solid #424242;\n"
 "border-radius:16px;\n"
 "background-color: #212121;")
         self.widget_option_1.setObjectName("widget_option_1")
-        self.gridLayout = QtWidgets.QGridLayout(self.widget_option_1)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setObjectName("gridLayout")
-        self.label_stats = QtWidgets.QLabel(self.widget_option_1)
-        font = QtGui.QFont()
-        font.setFamily("Nirmala UI")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setWeight(50)
-        self.label_stats.setFont(font)
-        self.label_stats.setStyleSheet("background-color: none;color: #ebe9fc;border: none;")
-        self.label_stats.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_stats.setObjectName("label_stats")
-        self.gridLayout.addWidget(self.label_stats, 0, 0, 1, 1)
-        self.widget_option_2 = QtWidgets.QWidget(self.widget_home)
-        self.widget_option_2.setGeometry(QtCore.QRect(20, 120, 390, 181))
-        self.widget_option_2.setStyleSheet("border: 2px solid #424242;\n"
-"border-radius:16px;\n"
-"background-color: #212121;")
-        self.widget_option_2.setObjectName("widget_option_2")
-        self.ip_v_input = QtWidgets.QLineEdit(self.widget_option_2)
+        self.ip_v_input = QtWidgets.QLineEdit(self.widget_option_1)
         self.ip_v_input.setGeometry(QtCore.QRect(10, 10, 370, 50))
         self.ip_v_input.setMinimumSize(QtCore.QSize(200, 40))
         self.ip_v_input.setMaximumSize(QtCore.QSize(16777215, 50))
@@ -541,7 +494,7 @@ class Ui_main(object):
         self.ip_v_input.setDragEnabled(False)
         self.ip_v_input.setReadOnly(True)
         self.ip_v_input.setObjectName("ip_v_input")
-        self.port_v_input = QtWidgets.QLineEdit(self.widget_option_2)
+        self.port_v_input = QtWidgets.QLineEdit(self.widget_option_1)
         self.port_v_input.setGeometry(QtCore.QRect(10, 70, 370, 50))
         self.port_v_input.setMinimumSize(QtCore.QSize(200, 40))
         self.port_v_input.setMaximumSize(QtCore.QSize(16777215, 50))
@@ -571,7 +524,7 @@ class Ui_main(object):
         self.port_v_input.setDragEnabled(False)
         self.port_v_input.setReadOnly(True)
         self.port_v_input.setObjectName("port_v_input")
-        self.btn_open_browser = QtWidgets.QPushButton(self.widget_option_2)
+        self.btn_open_browser = QtWidgets.QPushButton(self.widget_option_1)
         self.btn_open_browser.setGeometry(QtCore.QRect(10, 130, 370, 40))
         self.btn_open_browser.setMinimumSize(QtCore.QSize(200, 40))
         font = QtGui.QFont()
@@ -594,6 +547,57 @@ class Ui_main(object):
 "}")
         self.btn_open_browser.setIconSize(QtCore.QSize(30, 30))
         self.btn_open_browser.setObjectName("btn_open_browser")
+        self.widget_option_2 = QtWidgets.QWidget(self.widget_home)
+        self.widget_option_2.setGeometry(QtCore.QRect(10, 570, 410, 60))
+        self.widget_option_2.setStyleSheet("border: 2px solid #424242;\n"
+"border-radius:16px;\n"
+"background-color: #212121;")
+        self.widget_option_2.setObjectName("widget_option_2")
+        self.gridLayout = QtWidgets.QGridLayout(self.widget_option_2)
+        self.gridLayout.setContentsMargins(10, 10, 10, 10)
+        self.gridLayout.setSpacing(10)
+        self.gridLayout.setObjectName("gridLayout")
+        self.Btn_active_inactive = QtWidgets.QPushButton(self.widget_option_2)
+        self.Btn_active_inactive.setMinimumSize(QtCore.QSize(120, 40))
+        self.Btn_active_inactive.setMaximumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei")
+        font.setPointSize(11)
+        font.setBold(False)
+        font.setWeight(50)
+        self.Btn_active_inactive.setFont(font)
+        self.Btn_active_inactive.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.Btn_active_inactive.setStyleSheet("QPushButton{\n"
+"    background-color: #433bff;\n"
+"    border-radius:10px;\n"
+"    color: #ebe9fc;\n"
+"    border: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background-color: #2f27ce;\n"
+"border-radius:10px;\n"
+"}")
+        self.Btn_active_inactive.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/img/img/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/img/img/stop.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.Btn_active_inactive.setIcon(icon1)
+        self.Btn_active_inactive.setIconSize(QtCore.QSize(25, 25))
+        self.Btn_active_inactive.setCheckable(True)
+        self.Btn_active_inactive.setObjectName("Btn_active_inactive")
+        self.gridLayout.addWidget(self.Btn_active_inactive, 0, 1, 1, 1)
+        self.label_stats = QtWidgets.QLabel(self.widget_option_2)
+        font = QtGui.QFont()
+        font.setFamily("Nirmala UI")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
+        self.label_stats.setFont(font)
+        self.label_stats.setStyleSheet("background-color: none;color: #ebe9fc;border: none;")
+        self.label_stats.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.label_stats.setObjectName("label_stats")
+        self.gridLayout.addWidget(self.label_stats, 0, 0, 1, 1)
         self.widget_nav_background = QtWidgets.QWidget(self.widget)
         self.widget_nav_background.setGeometry(QtCore.QRect(0, 0, 430, 640))
         self.widget_nav_background.setStyleSheet("QWidget{\n"
@@ -786,7 +790,7 @@ class Ui_main(object):
         self.btn_close_nav_menu.setIconSize(QtCore.QSize(30, 30))
         self.btn_close_nav_menu.setObjectName("btn_close_nav_menu")
         self.widget_error_message = QtWidgets.QWidget(self.widget)
-        self.widget_error_message.setGeometry(QtCore.QRect(65, 570, 300, 50))
+        self.widget_error_message.setGeometry(QtCore.QRect(10, 570, 410, 50))
         self.widget_error_message.setMinimumSize(QtCore.QSize(300, 50))
         self.widget_error_message.setStyleSheet("QWidget{\n"
 "    background-color: #f8d7da;\n"
@@ -809,8 +813,8 @@ class Ui_main(object):
         self.label_text_e_message.setObjectName("label_text_e_message")
         self.horizontalLayout_2.addWidget(self.label_text_e_message)
         self.widget_success_message = QtWidgets.QWidget(self.widget)
-        self.widget_success_message.setGeometry(QtCore.QRect(65, 570, 300, 50))
-        self.widget_success_message.setMinimumSize(QtCore.QSize(300, 50))
+        self.widget_success_message.setGeometry(QtCore.QRect(10, 570, 410, 50))
+        self.widget_success_message.setMinimumSize(QtCore.QSize(400, 50))
         self.widget_success_message.setStyleSheet("QWidget{\n"
 "    background-color: #d4edda;\n"
 "    border-radius: 13px;\n"
@@ -862,12 +866,12 @@ class Ui_main(object):
         self.btn_save_change_ip_port.setText(_translate("MainWindow", "Save change"))
         self.label_option_text_1.setText(_translate("MainWindow", "Automatic opening of the browser"))
         self.label_option_text_2.setText(_translate("MainWindow", "Cache when Logging in"))
-        self.label_stats.setText(_translate("MainWindow", "Inactive"))
         self.ip_v_input.setText(_translate("MainWindow", "192.0.0.1"))
         self.ip_v_input.setPlaceholderText(_translate("MainWindow", "ip address"))
         self.port_v_input.setText(_translate("MainWindow", "8080"))
         self.port_v_input.setPlaceholderText(_translate("MainWindow", "port"))
         self.btn_open_browser.setText(_translate("MainWindow", "Open Browser"))
+        self.label_stats.setText(_translate("MainWindow", "Inactive"))
         self.label_title_nav.setText(_translate("MainWindow", "NRF"))
         self.label_pcname.setText(_translate("MainWindow", "Mahdi Zafari"))
         self.btn_home.setText(_translate("MainWindow", "Home"))
