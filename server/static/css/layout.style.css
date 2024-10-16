@@ -165,6 +165,74 @@
     font-size: 16px;
 }
 
+.mouse-control-container {
+    padding: 10px;
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: var(--tran-01);
+    user-select: none;
+}
+
+.mouse-move {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.mouse-scroll {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.mouse-click {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+}
+
+.mouse-button-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.mouse-button-control:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.mouse-button-control:active {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(1px);
+}
+
 @media (max-width: 768px) {
     .box-options-ControlCenter {
         flex-direction: column;
