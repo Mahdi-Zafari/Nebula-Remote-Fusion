@@ -6,6 +6,7 @@ import subprocess
 import pyautogui
 import comtypes
 import psutil
+import ctypes
 import json
 import os
 
@@ -19,6 +20,11 @@ with open(config_path, 'r') as config_file:
 
 mouse_movement_x = config.get("mouse_movement", {}).get("x", 0)
 mouse_movement_y = config.get("mouse_movement", {}).get("y", 0)
+
+MOUSEEVENTF_MOVE = 0x0001
+
+def move_mouse_relative(x, y):
+    ctypes.windll.user32.mouse_event(MOUSEEVENTF_MOVE, x, y, 0, 0)
 
 def register_routes(app):
     @app.route('/check-connection')
@@ -186,8 +192,7 @@ def register_routes(app):
     @app.route('/mouse/move/up', methods=['POST'])
     def move_mouse_up():
         try:
-            current_position = pyautogui.position()
-            pyautogui.moveTo(current_position.x, current_position.y - mouse_movement_y)
+            move_mouse_relative(0, -mouse_movement_y)
             return jsonify({'status': 'mouse moved up'}), 200
         except Exception as e:
             return jsonify({'error': str(e)}), 500
@@ -195,8 +200,7 @@ def register_routes(app):
     @app.route('/mouse/move/down', methods=['POST'])
     def move_mouse_down():
         try:
-            current_position = pyautogui.position()
-            pyautogui.moveTo(current_position.x, current_position.y + mouse_movement_y)
+            move_mouse_relative(0, mouse_movement_y)
             return jsonify({'status': 'mouse moved down'}), 200
         except Exception as e:
             return jsonify({'error': str(e)}), 500
@@ -204,18 +208,32 @@ def register_routes(app):
     @app.route('/mouse/move/left', methods=['POST'])
     def move_mouse_left():
         try:
-            current_position = pyautogui.position()
-            pyautogui.moveTo(current_position.x - mouse_movement_x, current_position.y)
+            move_mouse_relative(-mouse_movement_x, 0)
             return jsonify({'status': 'mouse moved left'}), 200
         except Exception as e:
             return jsonify({'error': str(e)}), 500
-
+    
     @app.route('/mouse/move/right', methods=['POST'])
     def move_mouse_right():
         try:
-            current_position = pyautogui.position()
-            pyautogui.moveTo(current_position.x + mouse_movement_x, current_position.y)
+            move_mouse_relative(mouse_movement_x, 0)
             return jsonify({'status': 'mouse moved right'}), 200
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+        
+    @app.route('/mouse/click/left', methods=['POST'])
+    def mouse_click_left():
+        try:
+            pyautogui.click(button='left')
+            return jsonify({'status': 'left mouse click'}), 200
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+    
+    @app.route('/mouse/click/right', methods=['POST'])
+    def mouse_click_right():
+        try:
+            pyautogui.click(button='right')
+            return jsonify({'status': 'right mouse click'}), 200
         except Exception as e:
             return jsonify({'error': str(e)}), 500
 
