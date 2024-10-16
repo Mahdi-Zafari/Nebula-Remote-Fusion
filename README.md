@@ -60,7 +60,7 @@ Currently, in its early versions, NRF is only available for Windows, with plans 
 
 
 ## Documentation
-For detailed documentation on the kernel, please refer to [Documentation/README.md](Documentation/README.md).
+For detailed documentation on the kernel, please refer to [Documentation](Documentation/README.md).
 
 ## License
 This project is licensed under the Mahdi Zafari Open Source License (MZOSL v1.0). Please see the [LICENSE](./LICENSE) file for more details.
