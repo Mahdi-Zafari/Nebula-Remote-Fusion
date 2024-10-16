@@ -25,31 +25,31 @@ def register_routes(app):
     def check_connection():
         return '', 200
 
-    @app.route('/restart')
+    @app.route('/restart', methods=['POST'])
     def restart():
         try:
             os.system('shutdown /r /t 1')
             return "Restarting...", 200
         except Exception as e:
             return str(e), 700
-
-    @app.route('/shutdown')
+    
+    @app.route('/shutdown', methods=['POST'])
     def shutdown():
         try:
             os.system('shutdown /s /t 1')
             return "Shutting down...", 200
         except Exception as e:
             return str(e), 700
-
-    @app.route('/sleep')
+    
+    @app.route('/sleep', methods=['POST'])
     def sleep():
         try:
             os.system('rundll32.exe powrprof.dll,SetSuspendState 0,1,0')
             return "Going to sleep...", 200
         except Exception as e:
             return str(e), 700
-
-    @app.route('/lock')
+    
+    @app.route('/lock', methods=['POST'])
     def lock():
         try:
             os.system("rundll32.exe user32.dll,LockWorkStation")
@@ -216,5 +216,21 @@ def register_routes(app):
             current_position = pyautogui.position()
             pyautogui.moveTo(current_position.x + mouse_movement_x, current_position.y)
             return jsonify({'status': 'mouse moved right'}), 200
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+
+    @app.route('/mouse/scroll/up', methods=['POST'])
+    def scroll_up():
+        try:
+            pyautogui.scroll(100)
+            return jsonify({'status': 'scrolled up'}), 200
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+
+    @app.route('/mouse/scroll/down', methods=['POST'])
+    def scroll_down():
+        try:
+            pyautogui.scroll(-100)
+            return jsonify({'status': 'scrolled down'}), 200
         except Exception as e:
             return jsonify({'error': str(e)}), 500
