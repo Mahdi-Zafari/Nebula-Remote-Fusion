@@ -21,32 +21,31 @@ function getBatteryIconClass(percentage) {
 }
 
 function fetchAndUpdate(url, elementId, valueKey) {
-    fetch(url)
-        .then(response => {
-            if (!response.ok) throw new Error(`Failed to fetch data from ${url}`);
-            return response.json();
-        })
-        .then(data => {
+    $.ajax({
+        url: url,
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
             const element = document.getElementById(elementId);
             if (data[valueKey] !== undefined) {
                 element.innerText = data[valueKey] === 'on' ? 'On' : 'Off';
             } else {
-                throw new Error(`Invalid data format from ${url}`);
+                showMessageCC(`Invalid data format from ${url}`, 'error');
             }
-        })
-        .catch(error => {
-            console.error(error);
-            showMessageCC(error.message, 'error');
-        });
+        },
+        error: function(xhr, status, error) {
+            console.error(`Failed to fetch data from ${url}`, error);
+            showMessageCC(`Failed to fetch data from ${url}`, 'error');
+        }
+    });
 }
 
 function getBatteryLevel() {
-    fetch('/battery')
-        .then(response => {
-            if (!response.ok) throw new Error('Failed to fetch battery level');
-            return response.json();
-        })
-        .then(data => {
+    $.ajax({
+        url: '/battery',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
             const batteryLevelSpan = document.querySelector('.control-device span');
             if (data.percentage !== undefined) {
                 batteryLevelSpan.textContent = `${data.percentage}%`;
@@ -55,11 +54,12 @@ function getBatteryLevel() {
                 batteryLevelSpan.textContent = "Battery info not available";
                 showMessageCC('Battery info not available', 'error');
             }
-        })
-        .catch(error => {
+        },
+        error: function(xhr, status, error) {
             console.error('Error fetching battery data:', error);
             showMessageCC('Error fetching battery data', 'error');
-        });
+        }
+    });
 }
 
 function updatePerformance(data) {
@@ -72,18 +72,18 @@ function updatePerformance(data) {
 }
 
 function getPerformanceData() {
-    fetch('/performance')
-        .then(response => {
-            if (!response.ok) throw new Error('Failed to fetch performance data');
-            return response.json();
-        })
-        .then(data => {
+    $.ajax({
+        url: '/performance',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
             updatePerformance(data);
-        })
-        .catch(error => {
+        },
+        error: function(xhr, status, error) {
             console.error('Error fetching performance data:', error);
             showMessageCC('Error fetching performance data', 'error');
-        });
+        }
+    });
 }
 
 function updateStatus() {
@@ -92,102 +92,188 @@ function updateStatus() {
     fetchAndUpdate('/airplane/status', 'airplane-status', 'airplane_mode');
 }
 
-// brightness, volume
 function adjustBrightness(change) {
-    fetch('/brightness/status')
-        .then(response => {
-            if (!response.ok) throw new Error('Failed to fetch brightness level');
-            return response.json();
-        })
-        .then(data => {
+    $.ajax({
+        url: '/brightness/status',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
             const currentBrightness = data.brightness;
             const newBrightness = Math.min(Math.max(currentBrightness + change, 0), 100);
 
-            fetch(`/brightness/set/${newBrightness}`, {
-                method: 'POST'
-            })
-            .then(response => {
-                if (!response.ok) throw new Error('Failed to set brightness');
-                return response.json();
-            })
-            .then(data => {
-                document.getElementById('brightness-status').textContent = `${data.brightness}%`;
-                showMessageCC(`Brightness set to ${data.brightness}%`, 'success');
-            })
-            .catch(error => {
-                console.error('Error adjusting brightness:', error);
-                showMessageCC('Error adjusting brightness', 'error');
+            $.ajax({
+                url: `/brightness/set/${newBrightness}`,
+                method: 'POST',
+                success: function(data) {
+                    document.getElementById('brightness-status').textContent = `${data.brightness}%`;
+                    showMessageCC(`Brightness set to ${data.brightness}%`, 'success');
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error adjusting brightness:', error);
+                    showMessageCC('Error adjusting brightness', 'error');
+                }
             });
-        })
-        .catch(error => {
+        },
+        error: function(xhr, status, error) {
             console.error('Error fetching current brightness:', error);
             showMessageCC('Error fetching current brightness', 'error');
-        });
+        }
+    });
 }
 
 function adjustVolume(change) {
-    fetch('/volume/status')
-        .then(response => {
-            if (!response.ok) throw new Error('Failed to fetch volume level');
-            return response.json();
-        })
-        .then(data => {
+    $.ajax({
+        url: '/volume/status',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
             const currentVolume = data.volume;
             const newVolume = Math.min(Math.max(currentVolume + change, 0), 100);
 
-            fetch(`/volume/set/${newVolume}`, {
-                method: 'POST'
-            })
-            .then(response => {
-                if (!response.ok) throw new Error('Failed to set volume');
-                return response.json();
-            })
-            .then(data => {
-                document.getElementById('volume-status').textContent = `${data.volume}%`;
-                showMessageCC(`Volume set to ${data.volume}%`, 'success');
-            })
-            .catch(error => {
-                console.error('Error adjusting volume:', error);
-                showMessageCC('Error adjusting volume', 'error');
+            $.ajax({
+                url: `/volume/set/${newVolume}`,
+                method: 'POST',
+                success: function(data) {
+                    document.getElementById('volume-status').textContent = `${data.volume}%`;
+                    showMessageCC(`Volume set to ${data.volume}%`, 'success');
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error adjusting volume:', error);
+                    showMessageCC('Error adjusting volume', 'error');
+                }
             });
-        })
-        .catch(error => {
+        },
+        error: function(xhr, status, error) {
             console.error('Error fetching current volume:', error);
             showMessageCC('Error fetching current volume', 'error');
-        });
+        }
+    });
 }
 
 function getBrightnessLevel() {
-    fetch('/brightness/status')
-        .then(response => {
-            if (!response.ok) throw new Error('Failed to fetch brightness level');
-            return response.json();
-        })
-        .then(data => {
+    $.ajax({
+        url: '/brightness/status',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
             document.getElementById('brightness-status').textContent = `${data.brightness}%`;
-        })
-        .catch(error => {
+        },
+        error: function(xhr, status, error) {
             console.error('Error fetching brightness data:', error);
             showMessageCC('Error fetching brightness data', 'error');
-        });
+        }
+    });
 }
 
 function getVolumeLevel() {
-    fetch('/volume/status')
-        .then(response => {
-            if (!response.ok) throw new Error('Failed to fetch volume level');
-            return response.json();
-        })
-        .then(data => {
+    $.ajax({
+        url: '/volume/status',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
             document.getElementById('volume-status').textContent = `${data.volume}%`;
-        })
-        .catch(error => {
+        },
+        error: function(xhr, status, error) {
             console.error('Error fetching volume data:', error);
             showMessageCC('Error fetching volume data', 'error');
-        });
+        }
+    });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+function moveMouse(direction) {
+    let url = '';
+
+    switch (direction) {
+        case 'up':
+            url = '/mouse/move/up';
+            break;
+        case 'down':
+            url = '/mouse/move/down';
+            break;
+        case 'left':
+            url = '/mouse/move/left';
+            break;
+        case 'right':
+            url = '/mouse/move/right';
+            break;
+        default:
+            console.error('Invalid mouse direction');
+            return;
+    }
+
+    $.ajax({
+        url: url,
+        method: 'POST',
+        success: function(response) {
+            console.log(response.status);
+            showMessageCC(response.status, 'success');
+        },
+        error: function(xhr, status, error) {
+            console.error('Error moving mouse:', error);
+            showMessageCC('Error moving mouse', 'error');
+        }
+    });
+}
+
+function mouseClick(button) {
+    let url = '';
+
+    switch (button) {
+        case 'left':
+            url = '/mouse/click/left';
+            break;
+        case 'right':
+            url = '/mouse/click/right';
+            break;
+        default:
+            console.error('Invalid mouse button');
+            return;
+    }
+
+    $.ajax({
+        url: url,
+        method: 'POST',
+        success: function(response) {
+            console.log(response.status);
+            showMessageCC(response.status, 'success');
+        },
+        error: function(xhr, status, error) {
+            console.error('Error clicking mouse:', error);
+            showMessageCC('Error clicking mouse', 'error');
+        }
+    });
+}
+
+function scrollMouse(direction) {
+    let url = '';
+
+    switch (direction) {
+        case 'up':
+            url = '/mouse/scroll/up';
+            break;
+        case 'down':
+            url = '/mouse/scroll/down';
+            break;
+        default:
+            console.error('Invalid scroll direction');
+            return;
+    }
+
+    $.ajax({
+        url: url,
+        method: 'POST',
+        success: function(response) {
+            console.log(response.status);
+            showMessageCC(response.status, 'success');
+        },
+        error: function(xhr, status, error) {
+            console.error('Error scrolling:', error);
+            showMessageCC('Error scrolling', 'error');
+        }
+    });
+}
+
+$(document).ready(function() {
     getBatteryLevel();
     updateStatus();
     getPerformanceData();
