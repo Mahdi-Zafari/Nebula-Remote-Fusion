@@ -140,6 +140,43 @@
             </div>
 
         </div>
+
+        <div class="mouse-control-container">
+            <div class="mouse-buttons">
+                <div class="mouse-move">
+                    <button class="mouse-button-control" id="move-up" onclick="moveMouse('up')">
+                        <i class="bx bx-up-arrow"></i>
+                    </button>
+                    <button class="mouse-button-control" id="move-left" onclick="moveMouse('left')">
+                        <i class='bx bx-left-arrow'></i>
+                    </button>
+                    <button class="mouse-button-control" id="move-right" onclick="moveMouse('right')">
+                        <i class='bx bx-right-arrow'></i>
+                    </button>
+                    <button class="mouse-button-control" id="move-down" onclick="moveMouse('down')">
+                        <i class='bx bx-down-arrow'></i>
+                    </button>
+                </div>
+
+                <div class="mouse-scroll">
+                    <button class="mouse-button-control" id="scroll-up" onclick="scrollMouse('up')">
+                        <i class="bx bx-up-arrow-alt"></i>
+                    </button>
+                    <button class="mouse-button-control" id="scroll-down" onclick="scrollMouse('down')">
+                        <i class="bx bx-down-arrow-alt"></i>
+                    </button>
+                </div>
+
+                <div class="mouse-click">
+                    <button class="mouse-button-control" id="click-left" onclick="mouseClick('left')">
+                        <i class='bx bx-mouse'></i> Left Click
+                    </button>
+                    <button class="mouse-button-control" id="click-right" onclick="mouseClick('right')">
+                        <i class='bx bx-mouse-alt'></i> Right Click
+                    </button>
+                </div>
+            </div>
+        </div>
             
         <div class="box-options-one">
             <div class="content">
@@ -151,6 +188,7 @@
 
     </div>
 
+    <script src="../static/js/jquery-3.6.0.min.js"></script>
     <script src="../static/js/main.script.js"></script>
     <script src="../static/js/power-options.script.js"></script>
     <script src="../static/js/control-center.script.js"></script>
