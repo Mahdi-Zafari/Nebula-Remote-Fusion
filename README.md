@@ -5,6 +5,12 @@
 <h1 align="center">Nebula Remote Fusion</h1>
 <h6 align="center">NRF System Management</h6>
 
+<p align="center">
+  <a href="https://github.com/Mahdi-Zafari/Nebula-Remote-Fusion/releases">
+    <img src="https://img.shields.io/github/v/release/Mahdi-Zafari/Nebula-Remote-Fusion?label=Version" alt="GitHub release">
+  </a>
+</p>
+
 ## Contents
 - [Introduction](#nrf-introduction)<br>
 - [Features](#features-and-capabilities)<br>
@@ -60,7 +66,7 @@ Currently, in its early versions, NRF is only available for Windows, with plans 
 
 
 ## Documentation
-For detailed documentation on the kernel, please refer to [Documentation](Documentation/README.md).
+For detailed documentation on the Core, please refer to [Documentation](Documentation/README.md).
 
 ## License
 This project is licensed under the Mahdi Zafari Open Source License (MZOSL v1.0). Please see the [LICENSE](./LICENSE) file for more details.
