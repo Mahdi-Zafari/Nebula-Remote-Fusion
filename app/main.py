@@ -90,7 +90,7 @@ class win_main(QMainWindow, Ui_main):
     def load_config(self):
         """Load configuration from JSON file."""
         config_path = os.path.join(os.path.dirname(__file__), 'config', 'main.config.json')
-        server_config_path = os.path.join(os.path.dirname(__file__), '..', 'server', 'config', 'main.config.json')
+        server_config_path = os.path.join(os.path.dirname(__file__), '..', 'core', 'config', 'main.config.json')
         server_config_path = os.path.abspath(server_config_path)
 
         if not os.path.isfile(config_path):
@@ -130,7 +130,7 @@ class win_main(QMainWindow, Ui_main):
             return
 
         try:
-            server_config_path = os.path.join(os.path.dirname(__file__), '..', 'server', 'config', 'main.config.json')
+            server_config_path = os.path.join(os.path.dirname(__file__), '..', 'core', 'config', 'main.config.json')
             server_config_path = os.path.abspath(server_config_path)
 
             with open(server_config_path, 'r') as config_file:
@@ -201,7 +201,7 @@ class win_main(QMainWindow, Ui_main):
     def update_cache_logging(self):
         """Update the cache logging setting in the server config file."""
         cache_logging = self.checkBox_cache_logging.isChecked()
-        server_config_path = os.path.join(os.path.dirname(__file__), '..', 'server', 'config', 'main.config.json')
+        server_config_path = os.path.join(os.path.dirname(__file__), '..', 'core', 'config', 'main.config.json')
 
         try:
             with open(server_config_path, 'r') as config_file:
@@ -223,10 +223,10 @@ class win_main(QMainWindow, Ui_main):
         """Update the label_stats text based on the current status."""
         if self.is_active:
             self.label_stats.setText("Active")
-            self.show_success_message("Server is Active.")
+            self.show_success_message("Core is Active.")
         else:
             self.label_stats.setText("Inactive")
-            self.show_error_message("Server is Inactive.")
+            self.show_error_message("Core is Inactive.")
 
     def toggle_status(self):
         """Toggle the active/inactive status when button is clicked."""
@@ -242,20 +242,20 @@ class win_main(QMainWindow, Ui_main):
         """Start the server using subprocess and open browser if configured."""
         try:
             self.server_process = subprocess.Popen(
-                ["python", "server/app.py", "--host", self.config['server']['host'], "--port", str(self.config['server']['port'])]
+                ["python", "core/app.py", "--host", self.config['server']['host'], "--port", str(self.config['server']['port'])]
             )
     
             if self.config.get('open_browser', True):
                 def open_browser():
                     webbrowser.open(f"http://{self.config['server']['host']}:{self.config['server']['port']}")
                 Timer(1, open_browser).start()
-                print("Server started and browser opened.")
+                print("Core started and browser opened.")
             else:
-                print("Server started without opening the browser.")
+                print("Core started without opening the browser.")
 
-            self.show_success_message("Server started successfully.")
+            self.show_success_message("Core started successfully.")
         except Exception as e:
-            self.show_error_message(f"Failed to start server: {str(e)}")
+            self.show_error_message(f"Failed to start Core: {str(e)}")
 
     def stop_server(self):
         """Stop the server process."""
@@ -263,15 +263,15 @@ class win_main(QMainWindow, Ui_main):
             if hasattr(self, 'server_process') and self.server_process:
                 self.server_process.terminate()
                 self.server_process = None
-                print("Server stopped.")
-                self.show_success_message("Server stopped successfully.")
+                print("Core stopped.")
+                self.show_success_message("Core stopped successfully.")
         except Exception as e:
-            self.show_error_message(f"Failed to stop server: {str(e)}")
+            self.show_error_message(f"Failed to stop Core: {str(e)}")
 
     def open_browser(self):
         """Open the browser with the server URL if active."""
         if not self.is_active:
-            self.show_error_message("Please activate the server.")
+            self.show_error_message("Please activate the Core.")
             return
         
         try:
@@ -384,12 +384,12 @@ def run_server_in_background(host, port):
         startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
 
         subprocess.Popen(
-            ["python", "server/app.py", "--host", host, "--port", str(port)],
+            ["python", "core/app.py", "--host", host, "--port", str(port)],
             startupinfo=startupinfo,
             creationflags=subprocess.CREATE_NO_WINDOW
         )
     except Exception as e:
-        print(f"Failed to start server in background: {str(e)}")
+        print(f"Failed to start Core in background: {str(e)}")
         sys.exit(1)
 
 def main():
