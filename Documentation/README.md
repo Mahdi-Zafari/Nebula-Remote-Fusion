@@ -1,6 +1,6 @@
-# NRF Kernel API Documentation
+# NRF Core API Documentation
 
-This document describes the available API endpoints in the **NRF Kernel**. Each endpoint provides system control and monitoring functionalities.
+This document describes the available API endpoints in the **NRF Core**. Each endpoint provides system control and monitoring functionalities.
 
 ## Table of Contents
 
@@ -138,5 +138,3 @@ This document describes the available API endpoints in the **NRF Kernel**. Each 
 2. **Reordering by Importance:** System control commands come first, followed by peripherals like mouse and volume control.
 3. **Detailed Descriptions:** More precise descriptions of each API's function, including edge case behavior (e.g., invalid levels for brightness and volume).
 4. **Method Explanation:** Each API endpoint lists the request method, body (if needed), and possible responses for clarity.
-
-This document is now more structured, easier to navigate, and provides sufficient detail for developers to integrate with the API.

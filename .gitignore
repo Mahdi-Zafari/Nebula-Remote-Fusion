@@ -1,5 +1,5 @@
-server/static/icon/boxicons-2.1.4
-server/static/font/yekan
+core/static/icon/boxicons-2.1.4
+core/static/font/yekan
 app/ui/__pycache__
-server/__pycache__
+core/__pycache__
 backup/
