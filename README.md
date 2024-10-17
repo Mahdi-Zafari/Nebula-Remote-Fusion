@@ -64,6 +64,8 @@ Currently, in its early versions, NRF is only available for Windows, with plans 
 > [!NOTE]
 > **Linux**: Coming Soon...
 
+## Installation Guide
+To install and run Nebula Remote Fusion, follow these steps:
 
 ## Documentation
 For detailed documentation on the Core, please refer to [Documentation](Documentation/README.md).
