@@ -15,7 +15,7 @@
 - [Introduction](#nrf-introduction)<br>
 - [Features](#features-and-capabilities)<br>
 - [Installation guide](#installation-guide)<br>
-  - [Server optimization](#server-optimization)<br>
+  - [Core optimization](#server-optimization)<br>
 - [Documentation](#documentation)<br>
 - [Supporting us](#supporting-us-hearts)<br>
 
