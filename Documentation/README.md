@@ -12,15 +12,16 @@ This document describes the available API endpoints in the **NRF Core**. Each en
     - [Lock System](#5-lock-system)
 2. [Mouse Control](#mouse-control)
     - [Move Mouse](#6-move-mouse)
-    - [Scroll Mouse](#7-scroll-mouse)
+    - [Mouse Click](#7-mouse-click)
+    - [Scroll Mouse](#8-scroll-mouse)
 3. [Volume Control](#volume-control)
-    - [Set Volume](#8-set-volume)
-    - [Get Volume Status](#9-get-volume-status)
+    - [Set Volume](#9-set-volume)
+    - [Get Volume Status](#10-get-volume-status)
 4. [Battery Information](#battery-information)
-    - [Battery Status](#10-battery-status)
+    - [Battery Status](#11-battery-status)
 5. [Brightness Control](#brightness-control)
-    - [Set Brightness](#11-set-brightness)
-    - [Get Brightness Status](#12-get-brightness-status)
+    - [Set Brightness](#12-set-brightness)
+    - [Get Brightness Status](#13-get-brightness-status)
 
 ---
 
@@ -61,40 +62,75 @@ This document describes the available API endpoints in the **NRF Core**. Each en
 ## Mouse Control
 
 ### 6. Move Mouse
-- **URL:** `/mouse/move`
+- **URL:** `/mouse/move/<direction>`
 - **Method:** `POST`
-- **Body:**
-  ```json
-  {
-    "direction": "up/down/left/right"
-  }
-  ```
+- **Parameters:**
+  - `<direction>`: `up`, `down`, `left`, `right`
 - **Response:** `200 OK` if successful, `500` otherwise
-- **Description:** Moves the mouse in the specified direction based on the configured pixel values in the `main.config.json` file.
+- **Description:** Moves the mouse in the specified direction by a configured amount in pixels.
+  
+  - **Endpoints**:
+    - `/mouse/move/up`
+    - `/mouse/move/down`
+    - `/mouse/move/left`
+    - `/mouse/move/right`
+  
+  - **Example Response**:
+    ```json
+    {
+      "status": "mouse moved up"
+    }
+    ```
 
-### 7. Scroll Mouse
-- **URL:** `/mouse/scroll`
+### 7. Mouse Click
+- **URL:** `/mouse/click/<button>`
 - **Method:** `POST`
-- **Body:**
-  ```json
-  {
-    "direction": "up/down"
-  }
-  ```
+- **Parameters:**
+  - `<button>`: `left`, `right`
+- **Response:** `200 OK` if successful, `500` otherwise
+- **Description:** Clicks the specified mouse button (`left` or `right`).
+  
+  - **Endpoints**:
+    - `/mouse/click/left`
+    - `/mouse/click/right`
+  
+  - **Example Response**:
+    ```json
+    {
+      "status": "left mouse click"
+    }
+    ```
+
+### 8. Scroll Mouse
+- **URL:** `/mouse/scroll/<direction>`
+- **Method:** `POST`
+- **Parameters:**
+  - `<direction>`: `up`, `down`
 - **Response:** `200 OK` if successful, `500` otherwise
 - **Description:** Scrolls the mouse up or down by a fixed amount.
+  
+  - **Endpoints**:
+    - `/mouse/scroll/up`
+    - `/mouse/scroll/down`
+  
+  - **Example Response**:
+    ```json
+    {
+      "status": "scrolled up"
+    }
+    ```
 
 ---
 
 ## Volume Control
 
-### 8. Set Volume
+### 9. Set Volume
 - **URL:** `/volume/set/<level>`
 - **Method:** `POST`
 - **Response:** `200 OK` if successful, `400` for invalid level, `500` otherwise
 - **Description:** Sets the system volume to a specified level (0-100).
 
-### 9. Get Volume Status
+### 10. Get Volume Status
 - **URL:** `/volume/status`
 - **Method:** `GET`
 - **Response:** `200 OK`
@@ -104,7 +140,7 @@ This document describes the available API endpoints in the **NRF Core**. Each en
 
 ## Battery Information
 
-### 10. Battery Status
+### 11. Battery Status
 - **URL:** `/battery`
 - **Method:** `GET`
 - **Response:** `200 OK` if battery information is available, `404` otherwise
@@ -114,27 +150,14 @@ This document describes the available API endpoints in the **NRF Core**. Each en
 
 ## Brightness Control
 
-### 11. Set Brightness
+### 12. Set Brightness
 - **URL:** `/brightness/set/<level>`
 - **Method:** `POST`
 - **Response:** `200 OK` if successful, `400` for invalid level, `500` otherwise
 - **Description:** Sets the screen brightness level (0-100).
 
-### 12. Get Brightness Status
+### 13. Get Brightness Status
 - **URL:** `/brightness/status`
 - **Method:** `GET`
 - **Response:** `200 OK`
 - **Description:** Returns the current screen brightness level.
-
----
-
-### Additional Notes
-- All system control routes (`/restart`, `/shutdown`, `/sleep`, `/lock`) require `POST` requests to ensure security and prevent accidental triggering via browser navigation.
-- `Mouse Control` and `Volume Control` routes also use `POST` to allow dynamic control of system peripherals.
-- System commands like brightness, volume, and system locking are dependent on platform-specific commands and may behave differently on non-Windows systems.
-
-### Key Enhancements:
-1. **Menu and Links:** Each section is linked from the table of contents for easier navigation.
-2. **Reordering by Importance:** System control commands come first, followed by peripherals like mouse and volume control.
-3. **Detailed Descriptions:** More precise descriptions of each API's function, including edge case behavior (e.g., invalid levels for brightness and volume).
-4. **Method Explanation:** Each API endpoint lists the request method, body (if needed), and possible responses for clarity.
