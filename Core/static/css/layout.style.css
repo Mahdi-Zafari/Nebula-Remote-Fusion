@@ -165,8 +165,8 @@
     font-size: 16px;
 }
 
-.mouse-control-container {
-    padding: 10px;
+.menu-options-container {
+    padding: 20px;
     width: 100%;
     max-width: 600px;
     background: rgba(255, 255, 255, 0.05);
@@ -179,39 +179,25 @@
     user-select: none;
 }
 
-.mouse-move {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    margin-bottom: 10px;
+.header-menu {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
 }
 
-.mouse-scroll {
-    width: 100%;
+.options-list {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 5px;
-    margin-bottom: 10px;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.mouse-click {
-    width: 100%;
+.option-button {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
-    gap: 5px;
-}
-
-.mouse-button-control {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 45px;
+    padding: 10px 15px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -219,18 +205,21 @@
     color: #ffffff;
     font-size: 16px;
     cursor: pointer;
-    user-select: none;
     transition: background 0.3s, transform 0.2s;
 }
 
-.mouse-button-control:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
+.option-button i {
+    font-size: 24px;
+    margin-right: 10px;
 }
 
-.mouse-button-control:active {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(1px);
+.option-button span {
+    font-size: 16px;
+}
+
+.option-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
