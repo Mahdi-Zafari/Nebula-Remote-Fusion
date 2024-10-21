@@ -105,6 +105,22 @@ def home():
 def operation_status():
     return render_model_template('operation_status')
 
+@app.route('/mouse_controller')
+def mouse_controller():
+    return render_model_template('system_management/mouse_controller')
+
+@app.route('/task_manager')
+def task_manager():
+    return render_model_template('system_management/task_manager')
+
+@app.route('/remote_file_management')
+def task_maremote_file_managementnager():
+    return render_model_template('system_management/remote_file_management')
+
+@app.route('/remote_command_prompt')
+def remote_command_prompt():
+    return render_model_template('system_management/remote_command_prompt')
+
 @app.errorhandler(404)
 def not_found_error(e):
     return render_model_template('404'), 404
