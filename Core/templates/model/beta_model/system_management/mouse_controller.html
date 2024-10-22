@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NRF | Mouse Controller</title>
+    <link rel="icon" href="../static/imgs/nebula-RF-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../static/css/mouse.main.style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="message-container">
+        <div id="error-message" class="error-message"></div>
+        <div id="success-message" class="success-message"></div>
+    </div>
+
+    <div class="content">
+        <div class="mouse-buttons">
+            <div class="mouse-move">
+                <button class="mouse-button-control" id="move-up" onclick="moveMouse('up')">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+                <div class="horizontal-buttons">
+                    <button class="mouse-button-control" id="move-left" onclick="moveMouse('left')">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button class="mouse-button-control" id="move-right" onclick="moveMouse('right')">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <button class="mouse-button-control" id="move-down" onclick="moveMouse('down')">
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+        
+            <div class="mouse-scroll">
+                <button class="mouse-button-control" id="scroll-up" onclick="scrollMouse('up')">
+                    <i class="fas fa-chevron-up"></i>
+                </button>
+                <button class="mouse-button-control" id="scroll-down" onclick="scrollMouse('down')">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+        
+            <div class="mouse-click">
+                <button class="mouse-button-control" id="click-left" onclick="mouseClick('left')">
+                    <i class="fas fa-mouse"></i> Left Click
+                </button>
+                <button class="mouse-button-control" id="click-right" onclick="mouseClick('right')">
+                    <i class="fas fa-mouse-pointer"></i> Right Click
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../../static/js/jquery-3.6.0.min.js"></script>
+    <script src="../../../../static/js/mouse_controller.script.js"></script>
+</body>
+</html>
