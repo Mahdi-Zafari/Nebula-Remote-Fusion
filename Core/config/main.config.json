@@ -4,7 +4,7 @@
         "password": "admin"
     },
     "model": "beta_model",
-    "save_tokens": false,
+    "save_tokens": true,
     "mouse_movement": {
         "mouse_mode": "button",
         "x": 15,
