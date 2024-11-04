@@ -5,5 +5,5 @@
         "debug": false
     },
     "open_browser": true,
-    "gost": true
+    "gost": false
 }
