@@ -6,6 +6,8 @@
     "model": "beta_model",
     "save_tokens": false,
     "mouse_movement": {
-        "mouse_mode": "button"
+        "mouse_mode": "button",
+        "x": 15,
+        "y": 15
     }
 }
