@@ -9,7 +9,6 @@ import json
 import sys
 import os
 
-
 from ui.app_ui import Ui_main
 
 config_path = os.path.join(os.path.dirname(__file__), 'config', 'main.config.json')
