@@ -13,7 +13,6 @@
 
 ## Contents
 
-
 - [Introduction](#nrf-introduction)  
 - [Features and Capabilities](#features-and-capabilities)  
 - [Installation Guide](#installation-guide)  
