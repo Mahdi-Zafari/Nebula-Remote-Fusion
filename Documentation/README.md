@@ -4,6 +4,8 @@ This document describes the available API endpoints in the **NRF Core**. Each en
 
 ## Table of Contents
 
+
+
 1. [System Control](#system-control)
     - [Check Connection](#1-check-connection)
     - [Restart System](#2-restart-system)
